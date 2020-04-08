@@ -15,8 +15,8 @@ CurrentNet = ipaddress.ip_network(sys.argv[1])
 SubnetList = CurrentNet.subnets(new_prefix=24)
 print(*SubnetList, sep = "\n")
 
-#for val in SubnetList:
-#    SubnetHostsList = ipaddress.ip_network(val).network_address
+#>>> ipaddress.ip_network('10.0.7.0/24').network_address
+#IPv4Address('10.0.7.0')
 
-#SubnetHostsList = ipaddress.ip_network('10.0.7.0/24').network_address
-#print(*SubnetHostsList, sep = "\n")
+#>>> ipaddress.ip_address("1.1.1.0").reverse_pointer
+#'0.1.1.1.in-addr.arpa'
