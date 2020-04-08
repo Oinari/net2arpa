@@ -13,7 +13,14 @@ if len(sys.argv) is not 2:
 CurrentNet = ipaddress.ip_network(sys.argv[1])
 
 SubnetList = CurrentNet.subnets(new_prefix=24)
-print(*SubnetList, sep = "\n")
+SubnetList = list(SubnetList)
+#print(*SubnetList, sep = "\n")
+
+SubnetAddrList = [ipaddress.ip_network(addr).network_address for addr in SubnetList]
+#print(*SubnetAddrList, sep = "\n")
+
+ArpaAddrList = [ipaddress.ip_address(addr).reverse_pointer for addr in SubnetAddrList]
+print(*ArpaAddrList, sep = "\n")
 
 #>>> ipaddress.ip_network('10.0.7.0/24').network_address
 #IPv4Address('10.0.7.0')
