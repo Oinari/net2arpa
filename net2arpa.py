@@ -1,5 +1,6 @@
 import sys
 import ipaddress
+import re
 
 def help():
     print(sys.argv[0]+" generates reverse DNS zonefiles for a given subnet.")
@@ -20,6 +21,7 @@ SubnetAddrList = [ipaddress.ip_network(addr).network_address for addr in SubnetL
 #print(*SubnetAddrList, sep = "\n")
 
 ArpaAddrList = [ipaddress.ip_address(addr).reverse_pointer for addr in SubnetAddrList]
+ArpaAddrList = [re.sub('^0.', '', addr) for addr in ArpaAddrList]
 print(*ArpaAddrList, sep = "\n")
 
 #>>> ipaddress.ip_network('10.0.7.0/24').network_address
