@@ -7,7 +7,7 @@ def help():
     print("Usage "+sys.argv[0]+" [ipblock]")
     print("Example: "+sys.argv[0]+" 10.0.0.0/8")
 
-if len(sys.argv) is not 2:
+if len(sys.argv) != 2:
     help()
     sys.exit(1)
 
